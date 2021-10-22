@@ -66,7 +66,6 @@ def fixdate(given, format="mdy"):
 					value[item+1] = 1
 	format = list(format)
 	final = []
-	print(splitdate)
 	for thing in format:
 		if thing == "m":
 			final.append(str(getmonth()))
