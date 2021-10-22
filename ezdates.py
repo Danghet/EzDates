@@ -7,8 +7,10 @@ def preformat():
 	global found
 	global months
 	for i in range(len(splitdate)):
+		if found[1] != 0: return None
 		try:
 			if int(splitdate[i][0]) <= 12:
+				found[1] = 1 
 				splitdate[i][0]= int(splitdate[i][0])
 				splitdate[i][2] = 1
 				break
@@ -16,10 +18,10 @@ def preformat():
 			for month in months:
 				if splitdate[i][0].lower() in month:
 					splitdate[i][0] = months[month]
-					if found[1] != 0: return None
 					found[1] = 1 
 					splitdate[i][2] = 1
 					break
+
 def getmonth():
 	global splitdate
 	for l in splitdate:
@@ -35,6 +37,7 @@ def getyear():
 	for l in splitdate:
 		if l[3] == 1:
 			return l[0]
+
 def fixdate(given, format="mdy"):
 	global splitdate
 	global found
@@ -47,6 +50,7 @@ def fixdate(given, format="mdy"):
 			value[3] = 1
 			if found[2] != 0: return None
 			found[2] = 1
+
 	for value in splitdate: 
 		i = 0
 		for item in value:
@@ -62,6 +66,7 @@ def fixdate(given, format="mdy"):
 					value[item+1] = 1
 	format = list(format)
 	final = []
+	print(splitdate)
 	for thing in format:
 		if thing == "m":
 			final.append(str(getmonth()))
