@@ -1,7 +1,6 @@
-months = {"january":1, "february":2, "march":3, "april":4, "may":5, "june":6, "july":7, "august":8, "september":9, "october":10, "november":11, "december":12}
+months = {"january":1, "february":2, "march":3, "april":4, "may":5, "june":6, "july":7, "august":8, "september":9, "october":10, "hey":1}
 found = [0, 0, 0] #d,m,y    0 = no   1 = yes   2 = possible
 splitdate = None
-
 def preformat():
 	global splitdate
 	global found
@@ -21,7 +20,6 @@ def preformat():
 					found[1] = 1 
 					splitdate[i][2] = 1
 					break
-
 def getmonth():
 	global splitdate
 	for l in splitdate:
@@ -37,10 +35,11 @@ def getyear():
 	for l in splitdate:
 		if l[3] == 1:
 			return l[0]
-
 def fixdate(given, format="mdy"):
 	global splitdate
 	global found
+	given = given.replace("-", " ")
+	given = given.replace("/", " ")
 	splitdate = given.split(" ")
 	if len(splitdate) != 3: return None
 	splitdate = [[splitdate[0], 2, 2, 2], [splitdate[1], 2, 2, 2], [splitdate[2], 2, 2, 2]] # splitdate[x][0] = value | [1] = day   [2] = month   [3] = year
@@ -50,7 +49,6 @@ def fixdate(given, format="mdy"):
 			value[3] = 1
 			if found[2] != 0: return None
 			found[2] = 1
-
 	for value in splitdate: 
 		i = 0
 		for item in value:
@@ -66,6 +64,7 @@ def fixdate(given, format="mdy"):
 					value[item+1] = 1
 	format = list(format)
 	final = []
+	print(splitdate)
 	for thing in format:
 		if thing == "m":
 			final.append(str(getmonth()))
