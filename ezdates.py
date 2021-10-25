@@ -1,4 +1,4 @@
-months = {"january":1, "february":2, "march":3, "april":4, "may":5, "june":6, "july":7, "august":8, "september":9, "october":10, "hey":1}
+months = {"january":1, "february":2, "march":3, "april":4, "may":5, "june":6, "july":7, "august":8, "september":9, "october":10, "november":11, "december":12}
 found = [0, 0, 0] #d,m,y    0 = no   1 = yes   2 = possible
 splitdate = None
 
