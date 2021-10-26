@@ -8,18 +8,34 @@ def preformat():
 	for i in range(len(splitdate)):
 		if found[1] != 0: return None
 		try:
-			if int(splitdate[i][0]) <= 12:
-				found[1] = 1 
-				splitdate[i][0]= int(splitdate[i][0])
-				splitdate[i][2] = 1
-				break
-		except:
 			for month in months:
-				if splitdate[i][0].lower() in month:
-					splitdate[i][0] = months[month]
+				if str(splitdate[i][0]) in month:
 					found[1] = 1 
+					splitdate[i][0] = int(months[month])
 					splitdate[i][2] = 1
-					break
+					return None	
+				else: continue
+		except: continue
+	for i in range(len(splitdate)):
+		if int(splitdate[i][0]) <= 12:
+			found[1] = 1
+			splitdate[i][0] = int(splitdate[i][0])
+			splitdate[i][2] = 1
+			return None
+		 			
+		# try:
+		# 	if int(splitdate[i][0]) <= 12:
+		# 		found[1] = 1 
+		# 		splitdate[i][0]= int(splitdate[i][0])
+		# 		splitdate[i][2] = 1
+		# 		continue
+		# except:
+		# 	for month in months:
+		# 		if splitdate[i][0].lower() in month:
+		# 			splitdate[i][0] = months[month]
+		# 			found[1] = 1 
+		# 			splitdate[i][2] = 1
+		# 			continue
 def getmonth():
 	global splitdate
 	for l in splitdate:
